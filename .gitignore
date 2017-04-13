@@ -48,4 +48,5 @@ Thumbs.db
 ##########
 env/
 paratransit/paratransit/settings.py
+paratransit/api/management/commands/paratransit_2015_vars.csv
 

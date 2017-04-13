@@ -31,6 +31,7 @@ class Command(BaseCommand):
 			reader = csv.reader(f)
 			for row in reader:
 				if row[0] != 'miscidx': # Ignore the header row, import everything else
+					print row[0]
 
 					# create date and time objects
 					if row[3]:

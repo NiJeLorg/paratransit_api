@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 from api.models import *
 import csv
 import datetime
+from django.db import connection
 
 
 """
@@ -23,6 +24,10 @@ class Command(BaseCommand):
 			return float(s)
 		except ValueError:
 			return None
+
+    def truncate_table(self):
+    	cursor = connection.cursor()
+    	cursor.execute("TRUNCATE TABLE api_trips RESTART IDENTITY;")
 	
 	def load_paratransit_data(self):
 		__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -547,6 +552,8 @@ class Command(BaseCommand):
 					i.save()
 
 	def handle(self, *args, **options):
+        print "Truncate Table...."
+    	self.truncate_table()
 		print "Load Paratransit Data..."
 		self.load_paratransit_data()
 

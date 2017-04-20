@@ -25,9 +25,9 @@ class Command(BaseCommand):
 		except ValueError:
 			return None
 
-    def truncate_table(self):
-    	cursor = connection.cursor()
-    	cursor.execute("TRUNCATE TABLE api_trips RESTART IDENTITY;")
+	def truncate_table(self):
+		cursor = connection.cursor()
+		cursor.execute("TRUNCATE TABLE api_trips RESTART IDENTITY;")
 	
 	def load_paratransit_data(self):
 		__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -552,8 +552,8 @@ class Command(BaseCommand):
 					i.save()
 
 	def handle(self, *args, **options):
-        print "Truncate Table...."
-    	self.truncate_table()
+		print "Truncate Table...."
+		self.truncate_table()
 		print "Load Paratransit Data..."
 		self.load_paratransit_data()
 

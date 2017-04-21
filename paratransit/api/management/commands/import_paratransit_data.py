@@ -40,17 +40,26 @@ class Command(BaseCommand):
 
 					# create date and time objects
 					if row[3]:
-						tripdate = datetime.datetime.strptime(row[3], "%Y-%m-%d").date()
+						try:
+							tripdate = datetime.datetime.strptime(row[3], "%Y-%m-%d").date()
+						except Exception as e:
+							tripdate = None
 					else:
 						tripdate = None
 
 					if row[4]:
-						picktime = datetime.datetime.strptime(row[4], "%H:%M").time()
+						try:
+							picktime = datetime.datetime.strptime(row[4], "%H:%M").time()
+						except Exception as e:
+							picktime = None
 					else:
 						picktime = None
 
 					if row[5]:
-						droptime = datetime.datetime.strptime(row[5], "%H:%M").time()
+						try:
+							droptime = datetime.datetime.strptime(row[5], "%H:%M").time()
+						except Exception as e:
+							droptime = None						
 					else:
 						droptime = None
 
@@ -63,12 +72,18 @@ class Command(BaseCommand):
 
 					# create date and time objects
 					if row[30]:
-						pickdate = datetime.datetime.strptime(row[30], "%Y-%m-%d").date()
+						try:
+							pickdate = datetime.datetime.strptime(row[30], "%Y-%m-%d").date()
+						except Exception as e:
+							pickdate = None						
 					else:
 						pickdate = None
 
 					if row[31]:
-						dropdate = datetime.datetime.strptime(row[31], "%Y-%m-%d").date()
+						try:
+							dropdate = datetime.datetime.strptime(row[31], "%Y-%m-%d").date()
+						except Exception as e:
+							dropdate = None						
 					else:
 						dropdate = None
 

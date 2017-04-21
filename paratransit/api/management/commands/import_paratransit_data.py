@@ -30,9 +30,9 @@ class Command(BaseCommand):
 		cursor.execute("TRUNCATE TABLE api_trips RESTART IDENTITY;")
 	
 	def load_paratransit_data(self):
-		__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+		#__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 		# open LIS_Beacon_Beach_WQdata.csv and dump into BeachWQSamples table
-		with open(os.path.join(__location__, 'paratransit_2015_vars.csv'), 'rb') as f:
+		with open(os.path.join('/mnt/volume-nyc1-01/paratransit_raw_data/', 'paratransit_2015_vars.csv'), 'rb') as f:
 			reader = csv.reader(f)
 			for row in reader:
 				if row[0] != 'miscidx': # Ignore the header row, import everything else

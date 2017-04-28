@@ -57,31 +57,27 @@ class Command(BaseCommand):
 		# location of file
 		filename = os.path.join('/mnt/volume-nyc1-01/paratransit_raw_data/', 'paratransit_2015_vars.csv')
 
-		for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8'):
+		tp = pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8'):
+		print tp
+		df = pd.concat(tp, ignore_index=True)
 
-			df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
+		df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
 
-			df['tripdate'] = pd.to_datetime(df['tripdate'])
-			try:
-				df['picktime'] = pd.to_datetime(df['picktime'])
-			except Exception as e:
-				df['picktime'] = None
+		df['tripdate'] = pd.to_datetime(df['tripdate'])
+		try:
+			df['picktime'] = pd.to_datetime(df['picktime'])
+		except Exception as e:
+			df['picktime'] = None
 
-			try:
-				df['droptime'] = pd.to_datetime(df['droptime'])
-			except Exception as e:
-				df['droptime'] = None
+		try:
+			df['droptime'] = pd.to_datetime(df['droptime'])
+		except Exception as e:
+			df['droptime'] = None
 
-			df['pickdate'] = pd.to_datetime(df['pickdate'])
-			df['dropdate'] = pd.to_datetime(df['dropdate'])
-
-			df.index += index_start
-
-			j+=1
-			print '{} seconds: completed {} rows'.format((dt.datetime.now() - start).seconds, j*chunksize)
-			
-			df.to_sql(trips, con=engine)
-			index_start = df.index[-1] + 1
+		df['pickdate'] = pd.to_datetime(df['pickdate'])
+		df['dropdate'] = pd.to_datetime(df['dropdate'])
+		
+		df.to_sql(trips, con=engine)
 
 
 	def handle(self, *args, **options):

@@ -49,7 +49,7 @@ class Command(BaseCommand):
 	
 	def load_paratransit_data(self):
 		# load variables
-		start = datetime.datetime.now()
+		start = dt.datetime.now()
 		chunksize = 20000
 		j = 0
 		index_start = 1

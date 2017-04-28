@@ -57,8 +57,9 @@ class Command(BaseCommand):
 		# location of file
 		filename = os.path.join('/mnt/volume-nyc1-01/paratransit_raw_data/', 'paratransit_2015_vars.csv')
 
-		tp = pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8'):
+		tp = pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8')
 		print tp
+		
 		df = pd.concat(tp, ignore_index=True)
 
 		df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns

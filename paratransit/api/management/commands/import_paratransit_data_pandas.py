@@ -62,8 +62,16 @@ class Command(BaseCommand):
 			df = df.rename(columns={c: c.replace(' ', '') for c in df.columns}) # Remove spaces from columns
 
 			df['tripdate'] = pd.to_datetime(df['tripdate'])
-			df['picktime'] = pd.to_datetime(df['picktime'])
-			df['droptime'] = pd.to_datetime(df['droptime'])
+			try:
+				df['picktime'] = pd.to_datetime(df['picktime'])
+			except Exception as e:
+				df['picktime'] = None
+
+			try:
+				df['droptime'] = pd.to_datetime(df['droptime'])
+			except Exception as e:
+				df['droptime'] = None
+				
 			df['pickdate'] = pd.to_datetime(df['pickdate'])
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 

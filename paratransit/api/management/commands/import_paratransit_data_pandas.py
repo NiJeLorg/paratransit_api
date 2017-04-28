@@ -50,7 +50,7 @@ class Command(BaseCommand):
 	def load_paratransit_data(self):
 		# load variables
 		start = dt.datetime.now()
-		chunksize = 20000
+		chunksize = 1000
 		j = 0
 		index_start = 1
 
@@ -71,7 +71,7 @@ class Command(BaseCommand):
 				df['droptime'] = pd.to_datetime(df['droptime'])
 			except Exception as e:
 				df['droptime'] = None
-				
+
 			df['pickdate'] = pd.to_datetime(df['pickdate'])
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 

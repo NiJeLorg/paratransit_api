@@ -6,8 +6,9 @@ import datetime
 from django.db import connection
 
 
+
 """
-  Loads CHI hoods from CSV
+  Loads parastransit data from CSV to django ORM
 """
 class Command(BaseCommand):
 

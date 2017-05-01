@@ -59,6 +59,8 @@ class Command(BaseCommand):
 
 		for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8'):
 
+			df.columns = df.columns.astype(str)
+
 			df['tripdate'] = pd.to_datetime(df['tripdate'])
 			try:
 				df['picktime'] = pd.to_datetime(df['picktime'])
@@ -74,7 +76,7 @@ class Command(BaseCommand):
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 			
 			df.to_sql(trips, con=engine, if_exists='append')
-			
+
 			j+=1
 			print '{} seconds: completed {} rows'.format((dt.datetime.now() - start).seconds, j*chunksize)
 

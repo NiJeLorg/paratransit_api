@@ -74,6 +74,9 @@ class Command(BaseCommand):
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 			
 			df.to_sql(trips, con=engine, if_exists='append')
+			
+			j+=1
+			print '{} seconds: completed {} rows'.format((dt.datetime.now() - start).seconds, j*chunksize)
 
 
 	def handle(self, *args, **options):

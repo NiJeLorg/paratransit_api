@@ -75,9 +75,8 @@ class Command(BaseCommand):
 			df['pickdate'] = pd.to_datetime(df['pickdate'])
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 
-			print trips
 			
-			df.to_sql(trips, con=engine, if_exists='append')
+			df.to_sql('api_trips', con=engine, if_exists='append')
 
 			j+=1
 			print '{} seconds: completed {} rows'.format((dt.datetime.now() - start).seconds, j*chunksize)

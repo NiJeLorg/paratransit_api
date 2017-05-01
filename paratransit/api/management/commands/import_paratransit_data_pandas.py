@@ -57,7 +57,7 @@ class Command(BaseCommand):
 		# location of file
 		filename = os.path.join('/mnt/volume-nyc1-01/paratransit_raw_data/', 'paratransit_2015_vars.csv')
 
-		for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8')
+		for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8'):
 
 			df['tripdate'] = pd.to_datetime(df['tripdate'])
 			try:

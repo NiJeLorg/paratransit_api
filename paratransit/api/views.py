@@ -13,7 +13,9 @@ from rest_framework import viewsets, filters
 from api.serializers import *
 
 # for filtering in rest framework
-from django_filters.rest_framework import DjangoFilterBackend
+import django_filters.rest_framework
+from rest_framework import generics
+
 
 # Api views here.
 def api_index(request):
@@ -44,5 +46,5 @@ class TripsViewSet(viewsets.ModelViewSet):
     """
     queryset = trips.objects.all()
     serializer_class = TripsSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filter_fields = ('tripid', 'tripdate', 'provider', 'status', 'pickzip', 'dropzip', 'shared')

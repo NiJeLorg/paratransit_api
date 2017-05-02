@@ -9,7 +9,7 @@ from api.models import *
 
 #for django rest framework
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from api.serializers import *
 
 # for filtering in rest framework
@@ -46,4 +46,3 @@ class TripsViewSet(viewsets.ModelViewSet):
     serializer_class = TripsSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('tripid', 'tripdate', 'provider', 'status', 'pickzip', 'dropzip', 'shared')
-    

@@ -58,7 +58,7 @@ class Command(BaseCommand):
 		# location of file
 		filename = os.path.join('/mnt/volume-nyc1-01/paratransit_raw_data/', 'paratransit_2015_vars.csv')
 
-		for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8', dtype={'shared': np.bool_, 'p_val': np.int_, 'd_val': np.int_, 'osrm_rval': np.int_}):
+		for df in pd.read_csv(filename, chunksize=chunksize, iterator=True, encoding='utf-8', dtype={'shared': np.bool_}):
 
 			df.columns = df.columns.astype(str)
 
@@ -75,9 +75,9 @@ class Command(BaseCommand):
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 
 			#boolean fields
-			df['p_val'] = df['p_val'].fillna(value=False).astype('bool')
-			df['d_val'] = df['d_val'].fillna(value=False).astype('bool')
-			df['osrm_rval'] = df['osrm_rval'].fillna(value=False).astype('bool')
+			df['p_val'] = df['p_val'].fillna(value=0).astype('int').astype('bool')
+			df['d_val'] = df['d_val'].fillna(value=0).astype('int').astype('bool')
+			df['osrm_rval'] = df['osrm_rval'].fillna(value=0).astype('int').astype('bool')
 			
 			df.to_sql('api_trips', con=engine, if_exists='append')
 

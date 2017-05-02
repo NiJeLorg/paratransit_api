@@ -89,11 +89,12 @@ class Command(BaseCommand):
 					row[5] = None
 
 				print row[19]
-				
+
 				if row[19]:				
 					row[19] = self.CheckInt(row[19])
 					if row[19] == 1:
 						row[19] = True
+						print row[19]
 					else:
 						row[19] = False
 				else:

@@ -76,9 +76,9 @@ class Command(BaseCommand):
 			#boolean fields
 			d = {1: True, 0: False, '': None}
 
-			df['shared'].map(d)
+			df['shared'].replace(1, True)
 			print df['shared']
-			
+
 			df['p_val'].map(d)
 			df['d_val'].map(d)
 			df['osrm_rval'].map(d)

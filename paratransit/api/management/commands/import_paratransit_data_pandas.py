@@ -61,6 +61,7 @@ class Command(BaseCommand):
 
 			df.columns = df.columns.astype(str)
 
+			#date and time fields
 			df['tripdate'] = pd.to_datetime(df['tripdate'])
 			try:
 				df['picktime'] = pd.to_datetime(df['picktime'])
@@ -75,6 +76,38 @@ class Command(BaseCommand):
 			df['pickdate'] = pd.to_datetime(df['pickdate'])
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 
+			#boolean fields
+			if df['shared'] == 1:
+				df['shared'] = True
+			else:
+				df['shared'] = False
+
+			if df['p_val']:				
+				df['p_val'] = self.CheckInt(df['p_val'])
+				if df['p_val'] == 1:
+					df['p_val'] = True
+				else:
+					df['p_val'] = False
+			else:
+				df['p_val'] = False
+
+			if df['d_val']:
+				df['d_val'] = self.CheckInt(df['d_val'])
+				if df['d_val'] == 1:
+					df['d_val'] = True
+				else:
+					df['d_val'] = False
+			else:
+				df['d_val'] = False
+
+			if df['osrm_rval']:
+				df['osrm_rval'] = self.CheckInt(df['osrm_rval'])
+				if df['osrm_rval'] == 1:
+					df['osrm_rval'] = True
+				else:
+					df['osrm_rval'] = False
+			else:
+				df['osrm_rval'] = False			
 			
 			df.to_sql('api_trips', con=engine, if_exists='append')
 

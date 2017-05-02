@@ -65,12 +65,10 @@ class Command(BaseCommand):
 			df['tripdate'] = pd.to_datetime(df['tripdate'])
 
 			df['picktime'] = pd.to_datetime(df['picktime'], errors='coerce')
-			if df['picktime'] == 'NaT':
-				df['picktime'] = None
+			df['picktime'].replace('NaT', None)
 
-			df['droptime'] = pd.to_datetime(df['droptime'])
-			if df['droptime'] == 'NaT':
-				df['droptime'] = None
+			df['droptime'] = pd.to_datetime(df['droptime'], errors='coerce')
+			df['droptime'].replace('NaT', None)
 
 			df['pickdate'] = pd.to_datetime(df['pickdate'])
 			df['dropdate'] = pd.to_datetime(df['dropdate'])

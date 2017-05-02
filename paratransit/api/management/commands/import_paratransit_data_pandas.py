@@ -74,7 +74,7 @@ class Command(BaseCommand):
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 
 			#boolean fields
-			d = {'1': True, '0': False, '': None}
+			d = {1: True, 0: False, '': None}
 
 			df['shared'].map(d)
 			df['p_val'].map(d)

@@ -6,6 +6,7 @@ from django.db import models
 
 # trips model
 class trips(models.Model):
+	level_0 = models.IntegerField(default=0, null=True, blank=True)
 	miscidx = models.IntegerField(default=0, null=True, blank=True)
 	index = models.IntegerField(default=0, null=True, blank=True)
 	tripid = models.BigIntegerField(default=0, null=True, blank=True)

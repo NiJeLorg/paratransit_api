@@ -34,6 +34,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+
 class TripsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows trips to be viewed or edited.

@@ -77,6 +77,8 @@ class Command(BaseCommand):
 			d = {1: True, 0: False, '': None}
 
 			df['shared'].map(d)
+			print df['shared']
+			
 			df['p_val'].map(d)
 			df['d_val'].map(d)
 			df['osrm_rval'].map(d)

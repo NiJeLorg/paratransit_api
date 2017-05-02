@@ -62,8 +62,84 @@ class Command(BaseCommand):
 			df.columns = df.columns.astype(str)
 
 			for i, row in enumerate(df.values):
-				print i
-				print row
+
+				# create date and time objects
+				if row[3]:
+					try:
+						row[3] = datetime.datetime.strptime(row[3], "%Y-%m-%d").date()
+					except Exception as e:
+						row[3] = None
+				else:
+					row[3] = None
+
+				if row[4]:
+					try:
+						row[4] = datetime.datetime.strptime(row[4], "%H:%M").time()
+					except Exception as e:
+						row[4] = None
+				else:
+					row[4] = None
+
+				if row[5]:
+					try:
+						row[5] = datetime.datetime.strptime(row[5], "%H:%M").time()
+					except Exception as e:
+						row[5] = None						
+				else:
+					row[5] = None
+
+				# boolean field
+				if row[19] == '1':
+					row[19] = True
+				else:
+					row[19] = False
+
+
+				# create date and time objects
+				if row[30]:
+					try:
+						row[30] = datetime.datetime.strptime(row[30], "%Y-%m-%d").date()
+					except Exception as e:
+						row[30] = None						
+				else:
+					pickdate = None
+
+				if row[31]:
+					try:
+						row[31] = datetime.datetime.strptime(row[31], "%Y-%m-%d").date()
+					except Exception as e:
+						row[31] = None						
+				else:
+					row[31] = None
+
+				# boolean field
+				if row[43]:				
+					row[43] = self.CheckInt(row[43])
+					if row[43] == 1:
+						row[43] = True
+					else:
+						row[43] = False
+				else:
+					row[43] = False
+
+				if row[48]:
+					row[48] = self.CheckInt(row[48])
+					if row[48] == 1:
+						row[48] = True
+					else:
+						row[48] = False
+				else:
+					row[48] = False
+
+				if row[62]:
+					row[62] = self.CheckInt(row[62])
+					if row[62] == 1:
+						row[62] = True
+					else:
+						row[62] = False
+				else:
+					row[62] = False
+
 
 			# #date and time fields
 			# df['tripdate'] = pd.to_datetime(df['tripdate'])
@@ -113,7 +189,7 @@ class Command(BaseCommand):
 			# else:
 			# 	df['osrm_rval'] = False			
 			
-			# df.to_sql('api_trips', con=engine, if_exists='append')
+			df.to_sql('api_trips', con=engine, if_exists='append')
 
 			j+=1
 			print '{} seconds: completed {} rows'.format((dt.datetime.now() - start).seconds, j*chunksize)

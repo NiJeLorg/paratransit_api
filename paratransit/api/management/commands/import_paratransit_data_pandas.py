@@ -88,12 +88,15 @@ class Command(BaseCommand):
 				else:
 					row[5] = None
 
-				# boolean field
-				if row[19] == '1':
-					row[19] = True
+
+				if row[19]:				
+					row[19] = self.CheckInt(row[19])
+					if row[19] == 1:
+						row[19] = True
+					else:
+						row[19] = False
 				else:
 					row[19] = False
-
 
 				# create date and time objects
 				if row[30]:

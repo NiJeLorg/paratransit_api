@@ -88,7 +88,8 @@ class Command(BaseCommand):
 				else:
 					row[5] = None
 
-
+				print row[19]
+				
 				if row[19]:				
 					row[19] = self.CheckInt(row[19])
 					if row[19] == 1:

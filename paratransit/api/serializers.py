@@ -15,7 +15,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('url', 'name')
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+
+class TripsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = trips
         fields = ('tripid', 'tripdate', 'provider', 'status', 'pickzip', 'dropzip', 'shared')

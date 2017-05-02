@@ -10,7 +10,7 @@ from api.models import *
 #for django rest framework
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from api.serializers import UserSerializer, GroupSerializer
+from api.serializers import *
 
 # Api views here.
 def api_index(request):
@@ -33,3 +33,10 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+class TripsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows trips to be viewed or edited.
+    """
+    queryset = trips.objects.all()
+    serializer_class = TripsSerializer

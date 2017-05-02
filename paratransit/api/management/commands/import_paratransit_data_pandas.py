@@ -76,25 +76,12 @@ class Command(BaseCommand):
 			df['dropdate'] = pd.to_datetime(df['dropdate'])
 
 			#boolean fields
-			if df['shared'] == 1:
-				df['shared'] = True
-			else:
-				df['shared'] = False
+			d = {'1': True, '0': False, '': None}
 
-			if df['p_val'] == 1:
-				df['p_val'] = True
-			else:
-				df['p_val'] = False
-
-			if df['d_val'] == 1:
-				df['d_val'] = True
-			else:
-				df['d_val'] = False
-
-			if df['osrm_rval'] == 1:
-				df['osrm_rval'] = True
-			else:
-				df['osrm_rval'] = False
+			df['shared'].map(d)
+			df['p_val'].map(d)
+			df['d_val'].map(d)
+			df['osrm_rval'].map(d)
 			
 			df.to_sql('api_trips', con=engine, if_exists='append')
 

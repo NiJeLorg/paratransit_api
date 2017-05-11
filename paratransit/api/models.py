@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models
+from django.contrib.gis.db import models
 
 
 # trips model
@@ -450,3 +450,23 @@ class trips(models.Model):
 	d_b01003_001e_y = models.IntegerField(default=0, null=True, blank=True)
 	d_b19013_001e_y = models.IntegerField(default=0, null=True, blank=True)
 	d_b18101_001e_y = models.IntegerField(default=0, null=True, blank=True)		
+
+# pickups model
+class pickup_locations(models.Model):
+	trip = models.OneToOneField(trips, on_delete=models.CASCADE)
+	tripid = models.BigIntegerField(default=0, null=True, blank=True)
+	p_lat = models.FloatField(default=0, null=True, blank=True)
+	p_lng = models.FloatField(default=0, null=True, blank=True)
+	# GeoDjango-specific: a geometry field (MultiPolygonField)
+	point = models.PointField(null=True, blank=True)
+
+# dropoffs model 
+class dropoff_locations(models.Model):
+	trip = models.OneToOneField(trips, on_delete=models.CASCADE)
+	tripid = models.BigIntegerField(default=0, null=True, blank=True)
+	p_lat = models.FloatField(default=0, null=True, blank=True)
+	p_lng = models.FloatField(default=0, null=True, blank=True)
+	# GeoDjango-specific: a geometry field (MultiPolygonField)
+	point = models.PointField(null=True, blank=True)
+
+

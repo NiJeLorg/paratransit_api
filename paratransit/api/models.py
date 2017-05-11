@@ -457,16 +457,14 @@ class pickup_locations(models.Model):
 	tripid = models.BigIntegerField(default=0, null=True, blank=True)
 	p_lat = models.FloatField(default=0, null=True, blank=True)
 	p_lng = models.FloatField(default=0, null=True, blank=True)
-	# GeoDjango-specific: a geometry field (MultiPolygonField)
-	point = models.PointField(null=True, blank=True)
+	the_geom = models.PointField(null=True, blank=True)
 
 # dropoffs model 
 class dropoff_locations(models.Model):
 	trip = models.OneToOneField(trips, on_delete=models.CASCADE)
 	tripid = models.BigIntegerField(default=0, null=True, blank=True)
-	p_lat = models.FloatField(default=0, null=True, blank=True)
-	p_lng = models.FloatField(default=0, null=True, blank=True)
-	# GeoDjango-specific: a geometry field (MultiPolygonField)
-	point = models.PointField(null=True, blank=True)
+	d_lat = models.FloatField(default=0, null=True, blank=True)
+	d_lng = models.FloatField(default=0, null=True, blank=True)
+	the_geom = models.PointField(null=True, blank=True)
 
 

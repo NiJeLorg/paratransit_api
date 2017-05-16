@@ -467,6 +467,39 @@ class dropoff_locations(models.Model):
 	d_lng = models.FloatField(default=0, null=True, blank=True)
 	the_geom = models.PointField(null=True, blank=True)
 
+#ada subway stations model
+class ada_subway_stations(models.Model):
+    cartodb_id = models.IntegerField()
+    lat = models.FloatField()
+    lon = models.FloatField()
+    objectid = models.IntegerField()
+    stop_id = models.CharField(max_length=80)
+    stop_name = models.CharField(max_length=80)
+    stop_lat = models.FloatField()
+    stop_lon = models.FloatField()
+    geoid = models.IntegerField()
+    namelsad = models.CharField(max_length=80)
+    stop_id2 = models.CharField(max_length=80)
+    trains = models.CharField(max_length=80)
+    geom = models.PointField(srid=4326)
+
+# Auto-generated `LayerMapping` dictionary for ada_subway_stations model
+ada_subway_stations_mapping = {
+    'cartodb_id' : 'cartodb_id',
+    'lat' : 'lat',
+    'lon' : 'lon',
+    'objectid' : 'objectid',
+    'stop_id' : 'stop_id',
+    'stop_name' : 'stop_name',
+    'stop_lat' : 'stop_lat',
+    'stop_lon' : 'stop_lon',
+    'geoid' : 'geoid',
+    'namelsad' : 'namelsad',
+    'stop_id2' : 'stop_id2',
+    'trains' : 'trains',
+    'geom' : 'POINT',
+}
+
 
 
 

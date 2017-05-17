@@ -500,6 +500,41 @@ ada_subway_stations_mapping = {
     'geom' : 'POINT',
 }
 
+#all subway stations model
+class nyct_subway_stops(models.Model):
+    cartodb_id = models.IntegerField()
+    objectid = models.IntegerField()
+    stop_id = models.CharField(max_length=80)
+    stop_name = models.CharField(max_length=80)
+    stop_lat = models.FloatField()
+    stop_lon = models.FloatField()
+    name_cur = models.CharField(max_length=80)
+    routes_wkd = models.CharField(max_length=80)
+    routes_off = models.CharField(max_length=80)
+    routes_all = models.CharField(max_length=80)
+    name_prop = models.CharField(max_length=80)
+    route_lbl = models.CharField(max_length=80)
+    ada_access = models.IntegerField()
+    geom = models.PointField(srid=4326)
+
+# Auto-generated `LayerMapping` dictionary for nyct_subway_stops model
+nyct_subway_stops_mapping = {
+    'cartodb_id' : 'cartodb_id',
+    'objectid' : 'objectid',
+    'stop_id' : 'stop_id',
+    'stop_name' : 'stop_name',
+    'stop_lat' : 'stop_lat',
+    'stop_lon' : 'stop_lon',
+    'name_cur' : 'name_cur',
+    'routes_wkd' : 'routes_wkd',
+    'routes_off' : 'routes_off',
+    'routes_all' : 'routes_all',
+    'name_prop' : 'name_prop',
+    'route_lbl' : 'route_lbl',
+    'ada_access' : 'ada_access',
+    'geom' : 'POINT',
+}
+
 
 
 

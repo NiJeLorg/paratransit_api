@@ -548,7 +548,7 @@ class nyc_odp_census_tracts(models.Model):
     boro_code = models.CharField(max_length=254)
     ct2010 = models.CharField(max_length=254)
     puma = models.CharField(max_length=254)
-    geom = models.PolygonField(srid=4326)
+    geom = models.MultiPolygonField(srid=4326)
 
 # Auto-generated `LayerMapping` dictionary for nyc_odp_census_tracts model
 nyc_odp_census_tracts_mapping = {
@@ -563,8 +563,7 @@ nyc_odp_census_tracts_mapping = {
     'boro_code' : 'boro_code',
     'ct2010' : 'ct2010',
     'puma' : 'puma',
-    'geom' : 'POLYGON',
+    'geom' : 'MULTIPOLYGON',
 }
-
 
 

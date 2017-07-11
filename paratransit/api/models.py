@@ -535,6 +535,36 @@ nyct_subway_stops_mapping = {
     'geom' : 'POINT',
 }
 
+#NYC ODP census tracts model
+class nyc_odp_census_tracts(models.Model):
+    ntacode = models.CharField(max_length=254)
+    ctlabel = models.CharField(max_length=254)
+    cdeligibil = models.CharField(max_length=254)
+    shape_leng = models.FloatField()
+    ntaname = models.CharField(max_length=254)
+    boro_name = models.CharField(max_length=254)
+    boro_ct201 = models.CharField(max_length=254)
+    shape_area = models.FloatField()
+    boro_code = models.CharField(max_length=254)
+    ct2010 = models.CharField(max_length=254)
+    puma = models.CharField(max_length=254)
+    geom = models.PolygonField(srid=4326)
+
+# Auto-generated `LayerMapping` dictionary for nyc_odp_census_tracts model
+nyc_odp_census_tracts_mapping = {
+    'ntacode' : 'ntacode',
+    'ctlabel' : 'ctlabel',
+    'cdeligibil' : 'cdeligibil',
+    'shape_leng' : 'shape_leng',
+    'ntaname' : 'ntaname',
+    'boro_name' : 'boro_name',
+    'boro_ct201' : 'boro_ct201',
+    'shape_area' : 'shape_area',
+    'boro_code' : 'boro_code',
+    'ct2010' : 'ct2010',
+    'puma' : 'puma',
+    'geom' : 'POLYGON',
+}
 
 
 

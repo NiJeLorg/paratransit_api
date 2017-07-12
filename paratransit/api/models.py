@@ -606,3 +606,36 @@ nyc_odp_ntas_mapping = {
     'boro_name' : 'boro_name',
     'geom' : 'MULTIPOLYGON',
 }
+
+#NYC ODP zip code tabulation areas model
+class nyc_odp_zctas(models.Model):
+    zipcode = models.CharField(max_length=5)
+    bldgzip = models.CharField(max_length=1)
+    po_name = models.CharField(max_length=28)
+    population = models.FloatField()
+    area = models.FloatField()
+    state = models.CharField(max_length=2)
+    county = models.CharField(max_length=20)
+    st_fips = models.CharField(max_length=2)
+    cty_fips = models.CharField(max_length=3)
+    url = models.CharField(max_length=200)
+    shape_area = models.FloatField()
+    shape_len = models.FloatField()
+    geom = models.MultiPolygonField(srid=4326)
+
+# Auto-generated `LayerMapping` dictionary for nyc_odp_zctas model
+nyc_odp_zctas_mapping = {
+    'zipcode' : 'ZIPCODE',
+    'bldgzip' : 'BLDGZIP',
+    'po_name' : 'PO_NAME',
+    'population' : 'POPULATION',
+    'area' : 'AREA',
+    'state' : 'STATE',
+    'county' : 'COUNTY',
+    'st_fips' : 'ST_FIPS',
+    'cty_fips' : 'CTY_FIPS',
+    'url' : 'URL',
+    'shape_area' : 'SHAPE_AREA',
+    'shape_len' : 'SHAPE_LEN',
+    'geom' : 'MULTIPOLYGON',
+}

@@ -567,3 +567,21 @@ nyc_odp_census_tracts_mapping = {
 }
 
 
+#NYC ODP borough boundary model
+class nyc_odp_borough_boundaries(models.Model):
+    shape_leng = models.FloatField()
+    boro_name = models.CharField(max_length=254)
+    boro_code = models.FloatField()
+    shape_area = models.FloatField()
+    geom = models.MultiPolygonField(srid=4326)
+
+# Auto-generated `LayerMapping` dictionary for nyc_odp_borough_boundaries model
+nyc_odp_borough_boundaries_mapping = {
+    'shape_leng' : 'shape_leng',
+    'boro_name' : 'boro_name',
+    'boro_code' : 'boro_code',
+    'shape_area' : 'shape_area',
+    'geom' : 'MULTIPOLYGON',
+}
+
+

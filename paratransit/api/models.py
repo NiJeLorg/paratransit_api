@@ -584,4 +584,25 @@ nyc_odp_borough_boundaries_mapping = {
     'geom' : 'MULTIPOLYGON',
 }
 
+#NYC ODP neighborhood tabulation areas model
+class nyc_odp_ntas(models.Model):
+    county_fip = models.CharField(max_length=254)
+    shape_area = models.FloatField()
+    shape_leng = models.FloatField()
+    ntacode = models.CharField(max_length=254)
+    boro_code = models.FloatField()
+    ntaname = models.CharField(max_length=254)
+    boro_name = models.CharField(max_length=254)
+    geom = models.MultiPolygonField(srid=4326)
 
+# Auto-generated `LayerMapping` dictionary for nyc_odp_ntas model
+nyc_odp_ntas_mapping = {
+    'county_fip' : 'county_fip',
+    'shape_area' : 'shape_area',
+    'shape_leng' : 'shape_leng',
+    'ntacode' : 'ntacode',
+    'boro_code' : 'boro_code',
+    'ntaname' : 'ntaname',
+    'boro_name' : 'boro_name',
+    'geom' : 'MULTIPOLYGON',
+}

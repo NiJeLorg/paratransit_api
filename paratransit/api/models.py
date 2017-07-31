@@ -608,7 +608,7 @@ nyc_odp_ntas_mapping = {
 }
 
 #NYC ODP zip code tabulation areas model
-class nyc_odp_zctas(models.Model):
+class nyc_odp_zctas_remove_building_zips(models.Model):
     zipcode = models.CharField(max_length=5)
     bldgzip = models.CharField(max_length=1)
     po_name = models.CharField(max_length=28)
@@ -623,8 +623,8 @@ class nyc_odp_zctas(models.Model):
     shape_len = models.FloatField()
     geom = models.MultiPolygonField(srid=4326)
 
-# Auto-generated `LayerMapping` dictionary for nyc_odp_zctas model
-nyc_odp_zctas_mapping = {
+# Auto-generated `LayerMapping` dictionary for nyc_odp_zctas_remove_building_zips model
+nyc_odp_zctas_remove_building_zips_mapping = {
     'zipcode' : 'ZIPCODE',
     'bldgzip' : 'BLDGZIP',
     'po_name' : 'PO_NAME',

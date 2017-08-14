@@ -639,3 +639,23 @@ nyc_odp_zctas_remove_building_zips_mapping = {
     'shape_len' : 'SHAPE_LEN',
     'geom' : 'MULTIPOLYGON',
 }
+
+#Rudin Center / NYC ODP medical centers
+class medical_centers(models.Model):
+    borough = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
+    address = models.CharField(max_length=254)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    geom = models.PointField(srid=4326)
+
+# Auto-generated `LayerMapping` dictionary for medical_centers model
+medical_centers_mapping = {
+    'borough' : 'borough',
+    'name' : 'name',
+    'address' : 'address',
+    'latitude' : 'latitude',
+    'longitude' : 'longitude',
+    'geom' : 'POINT',
+}
+

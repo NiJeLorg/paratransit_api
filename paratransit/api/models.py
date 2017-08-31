@@ -661,8 +661,8 @@ medical_centers_mapping = {
 
 class trips_pickup_dropoff_tracts(models.Model):
 	tripid = models.BigIntegerField(default=0, null=True, blank=True)
-	pickup_tract = models.CharField(max_length=254)
-	dropoff_tract = models.CharField(max_length=254)
+	pickup_tract = models.CharField(max_length=254, null=True, blank=True)
+	dropoff_tract = models.CharField(max_length=254, null=True, blank=True)
 
 
 
